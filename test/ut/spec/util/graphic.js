@@ -1,14 +1,31 @@
-describe('util/graphic', function() {
 
-    var utHelper = window.utHelper;
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+describe('util/graphic', function () {
+
     var graphic;
 
     beforeAll(function (done) { // jshint ignore:line
-        utHelper.resetPackageLoader(function () {
-            window.require(['echarts/util/graphic'], function (g) {
-                graphic = g;
-                done();
-            });
+        window.requireES(['echarts/src/util/graphic'], function (g) {
+            graphic = g;
+            done();
         });
     });
 
@@ -72,5 +89,25 @@ describe('util/graphic', function() {
         });
 
     });
+
+    describe('lineLineIntersect', function () {
+
+        it ('extreme', function () {
+            expect(graphic.lineLineIntersect(10, 10, 30, 30, 10, 10, 10, 10)).toEqual(false);
+        });
+
+        it('parallel and colinear', function () {
+            expect(graphic.lineLineIntersect(10, 20, 30, 40, 100, 220, 120, 240)).toEqual(false);
+            expect(graphic.lineLineIntersect(10, 10, 30, 30, 40, 40, 50, 50)).toEqual(false);
+            expect(graphic.lineLineIntersect(10, 10, 30, 30, 10, 10, 30, 30)).toEqual(false);
+            expect(graphic.lineLineIntersect(10, 10, 30, 30, 20, 20, 30, 30)).toEqual(false);
+            expect(graphic.lineLineIntersect(10, 10, 30, 30, 20, 20, 22, 22)).toEqual(false);
+        });
+
+        it('intersect', function () {
+            expect(graphic.lineLineIntersect(10, 20, 30, 40, 12, 20, 30, 40)).toEqual(true);
+            expect(graphic.lineLineIntersect(10, 20, 30, 40, 12, 20, 20, 42)).toEqual(true);
+        });
+    })
 
 });

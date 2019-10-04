@@ -1,3 +1,23 @@
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
 /**
  * Simple draggable tool, just for demo or testing.
  * Use jquery.
@@ -18,18 +38,34 @@
          * @param {boolean} [opt.lockX=false]
          * @param {boolean} [opt.lockY=false]
          * @param {number} [opt.throttle=false]
+         * @param {boolean} [opt.addPlaceholder=false]
+         * @param {Function} [opt.onDrag]
          * @return {type}  description
          */
         init: function (mainEl, chart, opt) {
             opt = opt || {};
 
-            var chartResize = chart ? $.proxy(chart.resize, chart) : function () {};
+            var onDrag = opt.onDrag || $.proxy(chart.resize, chart);
+
+            var onDragThrottled = chart ? onDrag : function () {};
             if (opt.throttle) {
-                chartResize = throttle(chartResize, opt.throttle, true, false);
+                onDragThrottled = throttle(onDragThrottled, opt.throttle, true, false);
             }
 
             var mainEl = $(mainEl);
             var id = mainEl.attr('data-draggable-id');
+
+            if (opt.addPlaceholder) {
+                var width = mainEl.outerWidth();
+                var height = mainEl.outerHeight();
+                $('<div></div>').css({
+                    width: width,
+                    height: height,
+                    margin: 0,
+                    padding: 0,
+                    visibility: 'hidden'
+                }).insertAfter(mainEl);
+            }
 
             if (id == null) {
                 id = +Math.random();
@@ -151,7 +187,7 @@
 
                 label.text(Math.round(mainContentWidth) + ' x ' + Math.round(mainContentHeight));
 
-                chartResize();
+                onDragThrottled();
             }
         }
     };

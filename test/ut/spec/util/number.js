@@ -1,8 +1,28 @@
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
 describe('util/number', function () {
 
     var utHelper = window.utHelper;
 
-    var testCase = utHelper.prepare(['echarts/util/number']);
+    var testCase = utHelper.prepare(['echarts/src/util/number']);
 
     describe('linearMap', function () {
 
@@ -214,18 +234,18 @@ describe('util/number', function () {
             expect(+numberUtil.parseDate(1330819200000.01)).toEqual(1330819200000);
 
             // ISO string
-            expect(+numberUtil.parseDate('2012-03')).toEqual(1330560000000);
-            expect(+numberUtil.parseDate('2012-03-04')).toEqual(1330819200000);
-            expect(+numberUtil.parseDate('2012-03-04 05')).toEqual(1330837200000);
-            expect(+numberUtil.parseDate('2012-03-04T05')).toEqual(1330837200000);
-            expect(+numberUtil.parseDate('2012-03-04 05:06')).toEqual(1330837560000);
-            expect(+numberUtil.parseDate('2012-03-04T05:06')).toEqual(1330837560000);
-            expect(+numberUtil.parseDate('2012-03-04 05:06:07')).toEqual(1330837567000);
-            expect(+numberUtil.parseDate('2012-03-04T05:06:07')).toEqual(1330837567000);
-            expect(+numberUtil.parseDate('2012-03-04T05:06:07.123')).toEqual(1330837567123);
-            expect(+numberUtil.parseDate('2012-03-04T05:06:07,123')).toEqual(1330837567123);
-            expect(+numberUtil.parseDate('2012-03-04T05:06:07.12')).toEqual(1330837567012);
-            expect(+numberUtil.parseDate('2012-03-04T05:06:07.1')).toEqual(1330837567001);
+            expect(+numberUtil.parseDate('2012-03')).toEqual(1330531200000);
+            expect(+numberUtil.parseDate('2012-03-04')).toEqual(1330790400000);
+            expect(+numberUtil.parseDate('2012-03-04 05')).toEqual(1330808400000);
+            expect(+numberUtil.parseDate('2012-03-04T05')).toEqual(1330808400000);
+            expect(+numberUtil.parseDate('2012-03-04 05:06')).toEqual(1330808760000);
+            expect(+numberUtil.parseDate('2012-03-04T05:06')).toEqual(1330808760000);
+            expect(+numberUtil.parseDate('2012-03-04 05:06:07')).toEqual(1330808767000);
+            expect(+numberUtil.parseDate('2012-03-04T05:06:07')).toEqual(1330808767000);
+            expect(+numberUtil.parseDate('2012-03-04T05:06:07.123')).toEqual(1330808767123);
+            expect(+numberUtil.parseDate('2012-03-04T05:06:07,123')).toEqual(1330808767123);
+            expect(+numberUtil.parseDate('2012-03-04T05:06:07.12')).toEqual(1330808767012);
+            expect(+numberUtil.parseDate('2012-03-04T05:06:07.1')).toEqual(1330808767001);
             expect(+numberUtil.parseDate('2012-03-04T05:06:07,123Z')).toEqual(1330837567123);
             expect(+numberUtil.parseDate('2012-03-04T05:06:07.123+0800')).toEqual(1330808767123);
             expect(+numberUtil.parseDate('2012-03-04T05:06:07.123+08:00')).toEqual(1330808767123);
@@ -233,18 +253,18 @@ describe('util/number', function () {
             expect(+numberUtil.parseDate('2012-03-04T05:06:07.123-07:00')).toEqual(1330862767123);
 
             // Other string
-            expect(+numberUtil.parseDate('2012')).toEqual(1325376000000);
-            expect(+numberUtil.parseDate('2012/03')).toEqual(1330560000000);
-            expect(+numberUtil.parseDate('2012/03/04')).toEqual(1330819200000);
-            expect(+numberUtil.parseDate('2012-3-4')).toEqual(1330819200000);
-            expect(+numberUtil.parseDate('2012/3')).toEqual(1330560000000);
-            expect(+numberUtil.parseDate('2012/3/4')).toEqual(1330819200000);
-            expect(+numberUtil.parseDate('2012/3/4 2:05')).toEqual(1330826700000);
-            expect(+numberUtil.parseDate('2012/03/04 2:05')).toEqual(1330826700000);
-            expect(+numberUtil.parseDate('2012/3/4 2:05:08')).toEqual(1330826708000);
-            expect(+numberUtil.parseDate('2012/03/04 2:05:08')).toEqual(1330826708000);
-            expect(+numberUtil.parseDate('2012/3/4 2:05:08.123')).toEqual(1330826708123);
-            expect(+numberUtil.parseDate('2012/03/04 2:05:08.123')).toEqual(1330826708123);
+            expect(+numberUtil.parseDate('2012')).toEqual(1325347200000);
+            expect(+numberUtil.parseDate('2012/03')).toEqual(1330531200000);
+            expect(+numberUtil.parseDate('2012/03/04')).toEqual(1330790400000);
+            expect(+numberUtil.parseDate('2012-3-4')).toEqual(1330790400000);
+            expect(+numberUtil.parseDate('2012/3')).toEqual(1330531200000);
+            expect(+numberUtil.parseDate('2012/3/4')).toEqual(1330790400000);
+            expect(+numberUtil.parseDate('2012/3/4 2:05')).toEqual(1330797900000);
+            expect(+numberUtil.parseDate('2012/03/04 2:05')).toEqual(1330797900000);
+            expect(+numberUtil.parseDate('2012/3/4 2:05:08')).toEqual(1330797908000);
+            expect(+numberUtil.parseDate('2012/03/04 2:05:08')).toEqual(1330797908000);
+            expect(+numberUtil.parseDate('2012/3/4 2:05:08.123')).toEqual(1330797908123);
+            expect(+numberUtil.parseDate('2012/03/04 2:05:08.123')).toEqual(1330797908123);
         });
     });
 
@@ -305,6 +325,147 @@ describe('util/number', function () {
             ])).toEqual([
                 {interval: [18, 62], close: [1, 1]}
             ]);
+        });
+    });
+
+
+    describe('getPrecisionSafe', function () {
+        testCase('basic', function (numberUtil) {
+            expect(numberUtil.getPrecisionSafe(10)).toEqual(0);
+            expect(numberUtil.getPrecisionSafe(1)).toEqual(0);
+            expect(numberUtil.getPrecisionSafe(0)).toEqual(0);
+            expect(numberUtil.getPrecisionSafe(100000000000000000000000000000)).toEqual(0);
+            expect(numberUtil.getPrecisionSafe(1e+100)).toEqual(0);
+            expect(numberUtil.getPrecisionSafe(0.1)).toEqual(1);
+            expect(numberUtil.getPrecisionSafe(0.100)).toEqual(1);
+            expect(numberUtil.getPrecisionSafe(0.0032)).toEqual(4);
+            expect(numberUtil.getPrecisionSafe(0.0000000000034)).toEqual(12);
+            expect(numberUtil.getPrecisionSafe(3.4e-10)).toEqual(10);
+        });
+    });
+
+    describe('getPercentWithPrecision', function () {
+        testCase('basic', function (numberUtil) {
+
+            // console.log(numberUtil.getPercentWithPrecision([-1.678, -4.783, -2.664, -0.875], 0, 2));
+
+            // var arr = [49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5, 49.5];
+            var arr = [49.5, NaN];
+            var result = [];
+            for (var i = 0; i < arr.length; i++) {
+                result.push(
+                    numberUtil.getPercentWithPrecision(arr, i, 0)
+                );
+            }
+            console.log(result);
+            var sum = 0;
+            for (var i = 0; i < result.length; i++) {
+                sum += result[i];
+            }
+            console.log(sum);
+
+            expect(numberUtil.getPercentWithPrecision([50.5, 49.5], 0, 0)).toEqual(51);
+            expect(numberUtil.getPercentWithPrecision([50.5, 49.5], 1, 0)).toEqual(49);
+
+            expect(numberUtil.getPercentWithPrecision([12.34, 34.56, 53.1], 0, 1)).toEqual(12.3);
+            expect(numberUtil.getPercentWithPrecision([12.34, 34.56, 53.1], 1, 1)).toEqual(34.6);
+            expect(numberUtil.getPercentWithPrecision([12.34, 34.56, 53.1], 2, 1)).toEqual(53.1);
+
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875], 0, 0)).toEqual(17);
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875], 1, 0)).toEqual(48);
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875], 2, 0)).toEqual(26);
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875], 3, 0)).toEqual(9);
+        });
+
+        testCase('NaN data', function (numberUtil) {
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875, '-'], 0, 0)).toEqual(17);
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875, '-'], 1, 0)).toEqual(48);
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875, '-'], 2, 0)).toEqual(26);
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875, '-'], 3, 0)).toEqual(9);
+            expect(numberUtil.getPercentWithPrecision([1.678, 4.783, 2.664, 0.875, '-'], 4, 0)).toEqual(0);
+
+            expect(numberUtil.getPercentWithPrecision([0, undefined, '-', null, NaN], 0, 0)).toEqual(0);
+            expect(numberUtil.getPercentWithPrecision([0, undefined, '-', null, NaN], 1, 0)).toEqual(0);
+            expect(numberUtil.getPercentWithPrecision([0, undefined, '-', null, NaN], 2, 0)).toEqual(0);
+            expect(numberUtil.getPercentWithPrecision([0, undefined, '-', null, NaN], 3, 0)).toEqual(0);
+            expect(numberUtil.getPercentWithPrecision([0, undefined, '-', null, NaN], 4, 0)).toEqual(0);
+        });
+    });
+
+    describe('quantityExponent', function () {
+        testCase('basic', function (numberUtil) {
+            expect(numberUtil.quantityExponent(1)).toEqual(0);
+            expect(numberUtil.quantityExponent(9)).toEqual(0);
+            expect(numberUtil.quantityExponent(12)).toEqual(1);
+            expect(numberUtil.quantityExponent(123)).toEqual(2);
+            expect(numberUtil.quantityExponent(1234)).toEqual(3);
+            expect(numberUtil.quantityExponent(1234.5678)).toEqual(3);
+            expect(numberUtil.quantityExponent(10)).toEqual(1);
+            expect(numberUtil.quantityExponent(10000)).toEqual(4);
+        });
+
+        testCase('decimals', function (numberUtil) {
+            expect(numberUtil.quantityExponent(0.1)).toEqual(-1);
+            expect(numberUtil.quantityExponent(0.001)).toEqual(-3);
+            expect(numberUtil.quantityExponent(0.00123)).toEqual(-3);
+        });
+
+        testCase('large number', function (numberUtil) {
+            expect(numberUtil.quantityExponent(3.14e100)).toEqual(100);
+            expect(numberUtil.quantityExponent(3.14e-100)).toEqual(-100);
+        });
+
+        testCase('zero', function (numberUtil) {
+            expect(numberUtil.quantityExponent(0)).toEqual(0);
+        });
+    });
+
+    describe('quantity', function () {
+        testCase('basic', function (numberUtil) {
+            expect(numberUtil.quantity(1)).toEqual(1);
+            expect(numberUtil.quantity(9)).toEqual(1);
+            expect(numberUtil.quantity(12)).toEqual(10);
+            expect(numberUtil.quantity(123)).toEqual(100);
+            expect(numberUtil.quantity(1234)).toEqual(1000);
+            expect(numberUtil.quantity(1234.5678)).toEqual(1000);
+            expect(numberUtil.quantity(10)).toEqual(10);
+            expect(numberUtil.quantity(10000)).toEqual(10000);
+        });
+
+        testCase('decimals', function (numberUtil) {
+            expect(numberUtil.quantity(0.2)).toEqual(0.1);
+            expect(numberUtil.quantity(0.002)).toEqual(0.001);
+            expect(numberUtil.quantity(0.00123)).toEqual(0.001);
+        });
+
+        testCase('large number', function (numberUtil) {
+            expect(numberUtil.quantity(3.14e100)).toEqual(1e100);
+            expect(numberUtil.quantity(3.14e-100)).toEqual(1e-100);
+        });
+
+        testCase('zero', function (numberUtil) {
+            expect(numberUtil.quantity(0)).toEqual(1);
+        });
+    });
+
+
+    describe('nice', function () {
+        testCase('extreme', function (numberUtil) {
+            // Should not be 0.30000000000000004
+            expect(numberUtil.nice(0.3869394696651766, true)).toEqual(0.3);
+            expect(numberUtil.nice(0.3869394696651766)).toEqual(0.5);
+            expect(numberUtil.nice(0.00003869394696651766, true)).toEqual(0.00003);
+            expect(numberUtil.nice(0.00003869394696651766, false)).toEqual(0.00005);
+            expect(numberUtil.nice(0, true)).toEqual(0);
+            expect(numberUtil.nice(0)).toEqual(0);
+            expect(numberUtil.nice(13, true)).toEqual(10);
+            expect(numberUtil.nice(13)).toEqual(20);
+            expect(numberUtil.nice(3900000000000000000021, true)).toEqual(3000000000000000000000);
+            expect(numberUtil.nice(3900000000000000000021)).toEqual(5000000000000000000000);
+            expect(numberUtil.nice(0.00000000000000000656939, true)).toEqual(0.000000000000000005);
+            expect(numberUtil.nice(0.00000000000000000656939)).toEqual(0.00000000000000001);
+            expect(numberUtil.nice(0.10000000000000000656939, true)).toEqual(0.1);
+            expect(numberUtil.nice(0.10000000000000000656939)).toEqual(0.2);
         });
     });
 
